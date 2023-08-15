@@ -29,6 +29,10 @@ Removes both installed repository and the package, making efforts to remove all 
 
 Claims the agent against Netdata Cloud
 
+> streaming.yml
+
+Configure streaming to parents
+
 ## Parameters
 
 Playbooks behavior is parameterized to some extent. You may add or change the global settings in `group_vars/all` file or on per host basis in corresponding files in `host_vars/`

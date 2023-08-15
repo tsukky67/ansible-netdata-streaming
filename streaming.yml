@@ -1,0 +1,21 @@
+- name: Define vars
+  hosts: localhost
+
+  tasks:
+    - debug: msg="{{ input_var }}"
+
+- name: Config Netdata agent about streaming
+  hosts: all
+  remote_user: "{{ansible_user}}"
+  gather_facts: true
+  become: true
+  vars_prompt:
+  - name: ParentIP
+    prompt: "Input parent ip"
+    private: no
+  - name: APIKey
+    prompt: "Input parent API key"
+    private: no
+
+  roles:
+    - { role: config_netdata_streaming, become: true }

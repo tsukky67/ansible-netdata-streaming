@@ -1,0 +1,27 @@
+- name: Update enabled in [stream] section
+  lineinfile:
+    path: /etc/netdata/stream.conf
+    regexp: '^\s*enabled\s*=\s*no\s*$'
+    line: '    enabled = yes'
+    insertafter: '^\[stream\]'
+    before: '^\['
+    backrefs: yes
+
+- name: Update destination in [stream] section
+  lineinfile:
+    path: /etc/netdata/stream.conf
+    regexp: '^\s*destination\s*=\s*$'
+    line: "    destination = {{ ParentIP }}"
+    insertafter: '^\[stream\]'
+    before: '^\['
+    backrefs: yes
+
+- name: Update api key in [stream] section
+  lineinfile:
+    path: /etc/netdata/stream.conf
+    regexp: '^\s*api key\s*=\s*$'
+    line: "    api key = {{ APIKey }}"
+    insertafter: '^\[stream\]'
+    before: '^\['
+    backrefs: yes
+  notify: Restart netdata agent

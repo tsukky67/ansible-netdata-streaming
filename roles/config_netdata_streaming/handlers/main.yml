@@ -1,0 +1,7 @@
+---
+# handlers file for roles/config_netdata_streaming
+
+- name: Restart netdata agent
+  ansible.builtin.systemd:
+    name: netdata.service
+    state: restarted
