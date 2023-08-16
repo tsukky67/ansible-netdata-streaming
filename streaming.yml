@@ -1,9 +1,3 @@
-- name: Define vars
-  hosts: localhost
-
-  tasks:
-    - debug: msg="{{ input_var }}"
-
 - name: Config Netdata agent about streaming
   hosts: all
   remote_user: "{{ansible_user}}"
@@ -19,3 +13,4 @@
 
   roles:
     - { role: config_netdata_streaming, become: true }
+    
